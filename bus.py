@@ -115,11 +115,20 @@ def movimiento():
 
 
 
-
+num = '------'+' 1 '+'-'+' 2 '+'-'+' 3 '+'-' + ' 4 '+'-'+' 5 '+'-'+' 6 '+'-'+' 7 '  + '-'+ ' 8'
 
 
 print("Comienzo del juego: \n")
-for i in tablero_inicial: print(i)
+print(num)
+cuento_filas = 1
+for i in tablero_inicial: 
+    if cuento_filas <10:
+        print(cuento_filas,'--',np.array(i))
+        cuento_filas +=1
+    else:
+        print(cuento_filas,'-',np.array(i))
+        cuento_filas +=1
+
 
 
 
@@ -139,9 +148,15 @@ while not GAME_OVER: # Mientras que no hayamos perdido
         if a[fila,col] == 0:
             tablero_inicial[fila][col] = pulsado # Tablero ini es una lista
         # print('Tablero de juego: \n')
-        for i in tablero_ini: 
-            print(i)
-        print("Partida",str(contador_partidas+1))
+        print(num)
+        cuento_filas = 1
+        for i in tablero_inicial: 
+            if cuento_filas <10:
+                print(cuento_filas,'--',np.array(i))
+                cuento_filas +=1
+            else:
+                print(cuento_filas,'-',np.array(i))
+                cuento_filas +=1
         contador_partidas +=1
         print("-"*40)
         
@@ -149,31 +164,53 @@ while not GAME_OVER: # Mientras que no hayamos perdido
     ####### A PARTIR DE LA SEGUNDA JUGADA #########
     else: 
         movimiento()
-        print("Movimiento: ", str(fila+1),',',str(col+1))
+        print("Partida ", contador_partidas,"\nMovimiento: ", str(fila+1),',',str(col+1))
+        
+        
+        
+        
+        
         if p[fila,col] != 0 :
             print('Esa casilla ya ha sido pulsada, pruebe de nuevo: ')
             #movimiento()
-            print("-"*40)
+
         elif m[fila,col] == 1:
             print("Ha perdido, había una mina.")
             tablero_inicial[fila][col] = mina
             GAME_OVER = True
             # print('Tablero de juego: \n')
-            for i in tablero_ini: 
-                print(i)
+            cuento_filas = 1
+            for i in tablero_inicial: 
+                if cuento_filas <10:
+                    print(cuento_filas,'--',np.array(i))
+                    cuento_filas +=1
+                else:
+                    print(cuento_filas,'-',np.array(i))
+                    cuento_filas +=1
             print("-"*40)
             print("Duración del juego: "+str(contador_partidas +1)+" partidas.")
+
             break
+        
+        
+        
+        
         else:
-            print("Partida", str(contador_partidas+1))
             p[fila,col] = 1 # Modifico p 
             if a[fila,col] != 0: # Es decir, que tiene o mina o nº
                 tablero_inicial[fila][col]  = int(a[fila,col])
             if a[fila,col] == 0:
                 tablero_inicial[fila][col] = pulsado # Tablero ini es una lista
             # print('Tablero de juego: \n')
-            for i in tablero_ini: 
-                print(i)
-            print("-"*40)
+            print(num)
+            cuento_filas = 1
+            for i in tablero_inicial: 
+                if cuento_filas <10:
+                    print(cuento_filas,'--',np.array(i))
+                    cuento_filas +=1
+                else:
+                    print(cuento_filas,'-',np.array(i))
+                    cuento_filas +=1
+
             contador_partidas +=1
             #movimiento()
